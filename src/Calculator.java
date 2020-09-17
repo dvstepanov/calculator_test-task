@@ -19,6 +19,16 @@ public class Calculator {
                 "Операция деления происходит с округление до целого числа!");
         String[] words = string.nextLine().split(" ");
 
+        try{
+            if(words.length != 3){
+                throw new Exception("Неверное количество параметров!");
+            }
+        }
+        catch(Exception ex){
+            System.err.println(ex.getMessage());
+            System.exit(0);
+        }
+
        validation(words[0], words[2]);
 
         if (flagRim){
@@ -26,9 +36,15 @@ public class Calculator {
             words[2] = String.valueOf(RomanNumeral.romanToArabic(words[2]));
         }
 
-        number1 = Integer.parseInt(words[0]);
-        number2 = Integer.parseInt(words[2]);
-        operation = words[1];
+        try {
+            number1 = Integer.parseInt(words[0]);
+            number2 = Integer.parseInt(words[2]);
+            operation = words[1];
+        }
+        catch (NumberFormatException ex){
+            System.err.println("Вы не ввели число");
+            System.exit(0);
+        }
 
         try{
             if(!((number1 > 0) && (number1 <= 10) && (number2 > 0) && (number2 <= 10))){
