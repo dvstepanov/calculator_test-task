@@ -42,7 +42,7 @@ public class Calculator {
             operation = words[1];
         }
         catch (NumberFormatException ex){
-            System.err.println("Вы не ввели число");
+            System.err.println("Неверный формат ввода чисел");
             System.exit(0);
         }
 
